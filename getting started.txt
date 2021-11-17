@@ -1,0 +1,18 @@
+Commands to get started:
+    Open Vs Code
+    Open New Terminal
+    run command: npm i -D @playwright/test
+    run command: npx playwright install
+    run command: npm init playwright
+
+Testing:
+    npx playwright test "example.spec.ts"  
+    npx playwright test "example.spec.ts"  --debug
+
+Testing process:
+   Record a test by running: 
+   npx playwright test "newtest.spec.ts"  --debug
+   Keep running until happy with workflow
+   Run test live
+   npx playwright test "newtest.spec.ts"
+   Refactor until working
