@@ -1,3 +1,11 @@
+VsCode Extension to make life easier
+    ESLint
+    Playwright Test for VSCode
+        requires Test Explorer UI
+    Playwright Test Runner (broken but still usable)
+    Playwright Trace Viewer (will be obsolete in the next release)
+    Prettier - Code formatter (not used but something to consider)
+    
 Commands to get started for new project:
     Open Vs Code
     Open New Terminal
