@@ -4,6 +4,29 @@ Commands to get started:
     run command: npm i -D @playwright/test
     run command: npx playwright install
     run command: npm init playwright
+    Add-ons:
+    *** Used to have environment setup
+    run command: npm i -D dotenv
+
+Environment Setup:
+    Create .env file in root folder and add:
+        CONFIG_ENV_NAME=local
+
+    Create .env.local file in the environments folder and add:
+        CONFIG_NAME=local
+        BASE_URL=
+        CHAT_USER_NAME_1=
+        CHAT_USER_PASSWORD_1=
+        CHAT_USER_NAME_2=
+        CHAT_USER_PASSWORD_2=
+
+        ** Add values accordingly
+
+    Both of these files will be in the .gitignore file and will not be persisted
+
+Starting a new Test:
+    Add a new folder under e2e
+    Add a new test file and copy the contents of the template.spec.ts to start the file
 
 Testing:
     npx playwright test "example.spec.ts"  
