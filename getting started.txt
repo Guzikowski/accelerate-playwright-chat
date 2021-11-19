@@ -1,4 +1,4 @@
-Commands to get started:
+Commands to get started for new project:
     Open Vs Code
     Open New Terminal
     run command: npm i -D @playwright/test
@@ -7,6 +7,12 @@ Commands to get started:
     Add-ons:
     *** Used to have environment setup
     run command: npm i -D dotenv
+
+Commands to get started for cloned project:
+    Open Vs Code
+    Open New Terminal
+    run command: npm install
+    run command: npx playwright install
 
 Environment Setup:
     Create .env file in root folder and add:
