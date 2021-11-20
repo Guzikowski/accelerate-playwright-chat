@@ -32,10 +32,11 @@ This project is testing project for using Playwright against the Discord server.
 
         Create .env.local file in the environments folder and add:
             CONFIG_NAME=local
-            BASE_URL=
             CHAT_USER_NAME_1=
+            CHAT_USER_EMAIL_1=
             CHAT_USER_PASSWORD_1=
             CHAT_USER_NAME_2=
+            CHAT_USER_EMAIL_2=
             CHAT_USER_PASSWORD_2=
 
             ** Add values accordingly

@@ -3,10 +3,11 @@ import fs from 'fs';
 
 export const RequiredConfigurationValues: Array<string> = [
 	'CONFIG_NAME',
-	'BASE_URL',
 	'CHAT_USER_NAME_1',
+	'CHAT_USER_EMAIL_1',
 	'CHAT_USER_PASSWORD_1',
 	'CHAT_USER_NAME_2',
+	'CHAT_USER_EMAIL_2',
 	'CHAT_USER_PASSWORD_2'
 ];
 
