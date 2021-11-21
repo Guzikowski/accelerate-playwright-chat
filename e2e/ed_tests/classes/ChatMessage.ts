@@ -14,18 +14,20 @@ export class ChatMessage {
 		await page.click('li[role="gridcell"]:has-text(":thumbsup: :+1: :thumbup:")');
 		await page.click('[aria-label="👍, 1 reaction, press to react"]');
 	}
+	public async AddFeedbackContent(page: Page, message: string) {
+		await page.click('[aria-label="Message #pw-feedback"] div');
+		await page.fill('[aria-label="Message #pw-feedback"] div', message);
+		await page.press('[aria-label="Message #pw-feedback"]', 'Enter');
+	}
+	public async AddReactionToFeedbackContent(page: Page, message: string) {
+		await page.click(`//div[text()="${message}"]`);
+		await page.click('[aria-label="Add Reaction"]');
+		await page.click('li[role="gridcell"]:has-text(":thumbsup: :+1: :thumbup:")');
+	}
+	public async DeleteFeedbackContent(page: Page, message: string) {
+		await page.click(`//div[text()="${message}"]`);
+		await page.click('[aria-label="More"]');
+		await page.click('div[role="menuitem"]:has-text("Delete Message")');
+		await page.click('button:has-text("Delete")');
+	}
 }
-
-/*   // Click text=pw-feedback
-  await page.click('text=pw-feedback');
-  await expect(page).toHaveURL('https://discord.com/channels/909154540404748348/910344598273007667');
-  // Click [aria-label="Message #pw-feedback"] div
-  await page.click('[aria-label="Message #pw-feedback"] div');
-  // Press Enter
-  await page.press('[aria-label="Message #pw-feedback"]', 'Enter');
-  // Click #chat-messages-911730893008273459 [aria-label="More"]
-  await page.click('#chat-messages-911730893008273459 [aria-label="More"]');
-  // Click text=Delete Message
-  await page.click('text=Delete Message');
-  // Click button:has-text("Delete")
-  await page.click('button:has-text("Delete")'); */
