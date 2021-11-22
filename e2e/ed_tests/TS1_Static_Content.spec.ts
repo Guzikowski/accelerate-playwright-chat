@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { SetupEnvironment } from '../../environments/SetupEnvironment';
 import { ChatSecurity, ChatChannel, ChatMessage } from './classes';
 
@@ -25,14 +25,15 @@ test.describe('Test Scenario 1 - Static Content Checks', () => {
 		chatChannel = new ChatChannel();
 		chatMessage = new ChatMessage();
 	});
-
+	test.beforeEach(async ({ page }) => {
+		await chatSecurity.NavigateToLogin(page);
+	});
 	test('Check announcement content exists', async ({ page }) => {
 		await chatSecurity.Login(page, userEmail1, userPassword1);
 		await chatChannel.NavigateToAnnouncements(page);
 		await chatMessage.CheckAndReactToAnnouncementsContent(page);
 		await chatSecurity.LogOut(page);
 	});
-
 	test('Check release content exists', async ({ page }) => {
 		await chatSecurity.Login(page, userEmail2, userPassword2);
 		await chatChannel.NavigateToReleases(page);

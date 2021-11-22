@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { SetupEnvironment } from '../../environments/SetupEnvironment';
 import { ChatSecurity, ChatChannel, ChatMessage } from './classes';
 
@@ -25,7 +25,9 @@ test.describe('Test Scenario 2 - Add Channel Content Checks', () => {
 		chatChannel = new ChatChannel();
 		chatMessage = new ChatMessage();
 	});
-
+	test.beforeEach(async ({ page }) => {
+		await chatSecurity.NavigateToLogin(page);
+	});
 	test('Add Content to Feedback', async ({ page }) => {
 		let message = 'test message test';
 		await chatSecurity.Login(page, userEmail1, userPassword1);
@@ -34,7 +36,6 @@ test.describe('Test Scenario 2 - Add Channel Content Checks', () => {
 		await chatMessage.DeleteFeedbackContent(page, message);
 		await chatSecurity.LogOut(page);
 	});
-
 	test('Add Content to Feedback and validate by different user', async ({ page }) => {
 		let message = 'test message test';
 		await chatSecurity.Login(page, userEmail2, userPassword2);

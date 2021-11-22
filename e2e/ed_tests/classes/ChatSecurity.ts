@@ -1,7 +1,9 @@
 import { expect, Page } from '@playwright/test';
 
 export class ChatSecurity {
+	private validUrl = new RegExp('.*//discord.com/');
 	private loginUrl = 'https://discord.com/login';
+	private alreadyLoggedInUrl = 'https://discord.com/channels/@me';
 	private locatorUserEmailText = '[aria-label="Email or Phone Number"]';
 	private locatorUserPasswordText = '[aria-label="Password"]';
 	private locatorLogInButton = 'button:has-text("Login")';
@@ -9,8 +11,15 @@ export class ChatSecurity {
 	private locatorLogOutLink = 'text=Log Out';
 	private locatorLogOutButton = 'button:has-text("Log Out")';
 
+	public async NavigateToLogin(page: Page) {
+		await Promise.all([ page.waitForNavigation(), page.goto(this.loginUrl) ]);
+		await expect(page).toHaveURL(this.validUrl);
+	}
+
 	public async Login(page: Page, userName: string, password: string) {
-		await page.goto(this.loginUrl);
+		if (page.url() == this.alreadyLoggedInUrl) {
+			await this.LogOut(page);
+		}
 		await expect(page).toHaveURL(this.loginUrl);
 		await page.fill(this.locatorUserEmailText, userName);
 		await page.fill(this.locatorUserPasswordText, password);

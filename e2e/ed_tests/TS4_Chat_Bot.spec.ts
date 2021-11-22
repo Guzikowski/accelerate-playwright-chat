@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 import { SetupEnvironment } from '../../environments/SetupEnvironment';
 import { ChatSecurity, ChatChannel } from './classes';
 

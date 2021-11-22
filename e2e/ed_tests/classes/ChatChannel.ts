@@ -13,6 +13,7 @@ export class ChatChannel {
 	private locatorReportIssueLink = 'text=pw-report-issue';
 	private pwReportIssueChannel = 'pw-report-issue';
 	private locatorMemberLink = '[aria-label="Members"] >> text=';
+	private locatorMemberLabel = '[aria-label=';
 	private locatorChannelName = '//h3[contains(@class,"title-29uC1r fontDisplay-1dagSA")]';
 
 	private async NavigateTo(page: Page, link: string, channelName: string) {
@@ -43,9 +44,14 @@ export class ChatChannel {
 		await this.NavigateToServer(page);
 		await this.NavigateTo(page, this.locatorReportIssueLink, this.pwReportIssueChannel);
 	}
-	public async NavigateToMemberChannel(page: Page, userName: string) {
+	public async StartMemberChannel(page: Page, userName: string) {
 		await this.NavigateToServer(page);
 		let link = `${this.locatorMemberLink}${userName}`;
+		await page.click(link);
+	}
+	public async NavigateToMemberChannel(page: Page, userName: string) {
+		await this.NavigateToServer(page);
+		let link = `${this.locatorMemberLabel}${userName}`;
 		await page.click(link);
 	}
 }
