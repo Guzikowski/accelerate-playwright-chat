@@ -2,6 +2,7 @@ import { expect, Page } from '@playwright/test';
 
 export class ChatChannel {
 	private locatorServerLink = '[aria-label="  Accelerate Chat server"]';
+	private locatorHomeLink = '//div[@aria-label="Home"]//div[1]';
 	private locatorAnnouncementsLink = 'text=announcements';
 	private announcementsChannel = 'announcements';
 	private locatorGeneralLink = 'text=general';
@@ -29,6 +30,14 @@ export class ChatChannel {
 			await page.click(this.locatorGotItPopup);
 		}
 	}
+	private async NavigateToHome(page: Page) {
+		await this.NavigateTo(page, this.locatorHomeLink, this.generalChannel);
+		let isPresent = await page.isVisible(this.locatorGotItPopup);
+		if (isPresent) {
+			await page.click(this.locatorGotItPopup);
+		}
+	}
+
 	public async NavigateToAnnouncements(page: Page) {
 		await this.NavigateToServer(page);
 		await this.NavigateTo(page, this.locatorAnnouncementsLink, this.announcementsChannel);
