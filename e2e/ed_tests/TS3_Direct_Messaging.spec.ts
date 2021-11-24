@@ -40,9 +40,6 @@ test.describe('Test Scenario 3 - Direct Messaging Checks', () => {
 		await chatSecurity.Login(userPage1, userEmail1, userPassword1);
 		await chatSecurity.Login(userPage2, userEmail2, userPassword2);
 
-		// TODO: Kill the Dismiss Banner
-		// Also Kill the Got it Popup
-
 		await chatChannel.NavigateToGeneral(userPage1);
 		await chatChannel.NavigateToGeneral(userPage2);
 		await chatChannel.StartMemberChannel(userPage2, userName1);

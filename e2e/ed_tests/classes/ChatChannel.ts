@@ -15,6 +15,7 @@ export class ChatChannel {
 	private locatorMemberLink = '[aria-label="Members"] >> text=';
 	private locatorMemberLabel = '[aria-label=';
 	private locatorChannelName = '//h3[contains(@class,"title-29uC1r fontDisplay-1dagSA")]';
+	private locatorGotItPopup = 'button:has-text("Got it")';
 
 	private async NavigateTo(page: Page, link: string, channelName: string) {
 		await page.click(link);
@@ -23,6 +24,10 @@ export class ChatChannel {
 	}
 	private async NavigateToServer(page: Page) {
 		await this.NavigateTo(page, this.locatorServerLink, this.generalChannel);
+		let isPresent = await page.isVisible(this.locatorGotItPopup);
+		if (isPresent) {
+			await page.click(this.locatorGotItPopup);
+		}
 	}
 	public async NavigateToAnnouncements(page: Page) {
 		await this.NavigateToServer(page);
