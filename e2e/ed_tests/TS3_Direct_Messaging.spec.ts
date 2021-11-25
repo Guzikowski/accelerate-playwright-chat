@@ -37,17 +37,13 @@ test.describe('Test Scenario 3 - Direct Messaging Checks', () => {
 	});
 
 	test('Simple Direct Message', async () => {
+		test.setTimeout(120000);
 		await chatSecurity.Login(userPage1, userEmail1, userPassword1);
 		await chatSecurity.Login(userPage2, userEmail2, userPassword2);
-
 		await chatChannel.NavigateToGeneral(userPage1);
 		await chatChannel.NavigateToGeneral(userPage2);
 		await chatChannel.StartMemberChannel(userPage2, userName1);
 		await chatMessage.StartDirectMessage(userPage2, userName1, 'Test start message');
-
-		//TODO:
-		// Need to go Home and then select the Direct Message
-
 		await chatChannel.NavigateToMemberChannel(userPage1, userName2);
 		await chatMessage.AddDirectMessage(userPage1, userName2, 'Test add message');
 		await chatSecurity.LogOut(userPage1);
@@ -55,6 +51,7 @@ test.describe('Test Scenario 3 - Direct Messaging Checks', () => {
 	});
 
 	test('Direct Messaging with Photos', async () => {
+		test.setTimeout(120000);
 		await chatSecurity.Login(userPage1, userEmail1, userPassword1);
 		await chatSecurity.Login(userPage2, userEmail2, userPassword2);
 		await chatChannel.NavigateToGeneral(userPage1);
@@ -69,7 +66,6 @@ test.describe('Test Scenario 3 - Direct Messaging Checks', () => {
 			'Test photo message',
 			'D:/MyGit/accelerate-playwright-chat/test_data/crash_impact.png'
 		);
-
 		await chatSecurity.LogOut(userPage1);
 		await chatSecurity.LogOut(userPage2);
 	});

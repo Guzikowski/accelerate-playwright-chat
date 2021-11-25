@@ -8,7 +8,7 @@ const config: PlaywrightTestConfig = {
 	// Test directory
 	testDir: path.join(__dirname, 'e2e'),
 	// If a test fails, retry it additional 2 times
-	retries: 0,
+	retries: 1,
 	// Artifacts folder where screenshots, videos, and traces are stored.
 	outputDir: 'test-results/',
 
@@ -18,12 +18,15 @@ const config: PlaywrightTestConfig = {
 	//   command: 'npm run start',
 	//   port: 3000,
 	// },
+	reporter: 'allure-playwright',
 
 	use: {
 		headless: false,
 		// Retry a test if its failing with enabled tracing. This allows you to analyse the DOM, console logs, network traffic etc.
 		// More information: https://playwright.dev/docs/trace-viewer
-		trace: 'retry-with-trace',
+		trace: 'on-first-retry',
+
+		video: 'on-first-retry',
 
 		// All available context options: https://playwright.dev/docs/api/class-browser#browser-new-context
 		contextOptions: {

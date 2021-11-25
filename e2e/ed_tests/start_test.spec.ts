@@ -8,7 +8,6 @@ test('basic log in / out test', async ({ page }) => {
 });
 
 test('basic announcement channel test', async ({ page }) => {
-	test.skip();
 	await page.goto('https://discord.com/login');
 	await Login(page);
 
@@ -32,7 +31,7 @@ test('basic releases channel test', async ({ page }) => {
 
 	await NavigateToServer(page);
 
-	await NavigateTo(page, 'text=releases', 'relases');
+	await NavigateTo(page, 'text=releases', 'releases');
 
 	await page.click('text=PTUS-3.3.112.0 released into Production');
 	await page.click('text=Version 3.3.112.0 The following release notes have been released in this version');

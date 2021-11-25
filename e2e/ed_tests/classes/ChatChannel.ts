@@ -7,6 +7,7 @@ export class ChatChannel {
 	private announcementsChannel = 'announcements';
 	private locatorGeneralLink = 'text=general';
 	private generalChannel = 'general';
+	private friendsChannel = 'Friends';
 	private locatorReleasesLink = 'text=releases';
 	private releasesChannel = 'releases';
 	private locatorFeedbackLink = 'text=pw-feedback';
@@ -31,7 +32,7 @@ export class ChatChannel {
 		}
 	}
 	private async NavigateToHome(page: Page) {
-		await this.NavigateTo(page, this.locatorHomeLink, this.generalChannel);
+		await this.NavigateTo(page, this.locatorHomeLink, this.friendsChannel);
 		let isPresent = await page.isVisible(this.locatorGotItPopup);
 		if (isPresent) {
 			await page.click(this.locatorGotItPopup);
@@ -59,13 +60,13 @@ export class ChatChannel {
 		await this.NavigateTo(page, this.locatorReportIssueLink, this.pwReportIssueChannel);
 	}
 	public async StartMemberChannel(page: Page, userName: string) {
-		await this.NavigateToServer(page);
-		let link = `${this.locatorMemberLink}${userName}`;
+		await this.NavigateToHome(page);
+		let link = `text=${userName}`;
 		await page.click(link);
 	}
 	public async NavigateToMemberChannel(page: Page, userName: string) {
-		await this.NavigateToServer(page);
-		let link = `${this.locatorMemberLabel}${userName}`;
+		await this.NavigateToHome(page);
+		let link = `text=${userName}`;
 		await page.click(link);
 	}
 }
